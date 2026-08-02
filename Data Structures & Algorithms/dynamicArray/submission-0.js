@@ -1,0 +1,74 @@
+class DynamicArray {
+    /**
+     * @constructor
+     * @param {number} capacity
+     */
+    constructor(capacity) {
+        this.capacity = capacity;
+        this.size = 0;
+        this.arr = new Array(capacity);
+    }
+
+    /**
+     * @param {number} i
+     * @returns {number}
+     */
+    get(i) {
+        return this.arr[i]
+    }
+
+    /**
+     * @param {number} i
+     * @param {number} n
+     * @returns {void}
+     */
+    set(i, n) {
+      this.arr[i] = n
+    }
+
+    /**
+     * @param {number} n
+     * @returns {void}
+     */
+    pushback(n) {
+      if(this.capacity === this.size) this.resize()
+      this.arr[this.size] = n;
+      this.size++;
+    }
+
+    /**
+     * @returns {number}
+     */
+    popback() {
+        this.size--
+        return this.arr[this.size]
+    }
+
+    /**
+     * @returns {void}
+     */
+    resize() {
+        const newCapacity = this.capacity * 2;
+        const newArr = new Array(newCapacity)
+
+        for (let i = 0; i < this.size; i++) {
+        newArr[i] = this.arr[i]
+        }
+        this.arr = newArr;
+        this.capacity = newCapacity
+    }
+
+    /**
+     * @returns {number}
+     */
+    getSize() {
+       return this.size 
+    }
+
+    /**
+     * @returns {number}
+     */
+    getCapacity() {
+        return this.capacity
+    }
+}
